@@ -14,7 +14,7 @@ Address Cleaning: Identified and populated missing property addresses using avai
 - SQL: For querying, updating, and transforming the dataset.
 - MySQL: Used to manage and manipulate the housing data in the Nashville_Housing table.
 
-##Approach:
+## Approach:
 
 - Standardized date formats to ensure proper handling of sales dates.
 - Used COALESCE() and JOIN statements to populate missing addresses.
