@@ -1,34 +1,69 @@
-# Nashville Housing Data Cleaning and Transformation
+# Nashville Housing Data Cleaning with SQL
 
-This project focuses on cleaning and transforming housing data from Nashville to make it more consistent, accurate, and ready for analysis. The main goal was to prepare the data by fixing common issues like missing values, messy formatting, and duplicate entries.
+This project is about cleaning a housing dataset from Nashville using SQL. The goal was to make the data easier to read and ready for analysis. I fixed missing information, changed the date format, removed duplicates, and cleaned up the address and other details.
 
-## What Was Done
+##  Author
 
-- **Fixed Date Format**  
-  Converted the `SaleDate` from text to a proper `DATE` format so it’s easier to work with in reports and analysis.
+**Sebastian Ortuno**
 
-- **Cleaned Up Addresses**  
-  Filled in missing property addresses using other data in the table. Then, split full addresses into separate columns: `Address`, `City`, and `State`.
+---
 
-- **Standardized Categories**  
-  Made the `SoldAsVacant` field easier to read by changing values from 'Y' and 'N' to 'Yes' and 'No'.
+##  Tools Used
 
-- **Removed Duplicates**  
-  Got rid of duplicate rows by checking for repeated values in columns like `LegalReference`, `LandValue`, `OwnerName`, `SalePrice`, and `TotalValue`.
+- **SQL** – To write queries and clean the data
+- **MySQL** – The database where the data is stored and changed
 
-- **Dropped Unused Columns**  
-  Removed unnecessary columns like `SaleDate` (original), `OwnerAddress`, `TaxDistrict`, and `PropertyAddress` to keep the dataset clean and focused.
+---
 
-## Tools and Technologies
+##  Steps I Followed
 
-- **SQL** – Used for querying and transforming the data.
-- **MySQL** – Managed the database and performed all operations within the `Nashville_Housing` table.
+### 1. Fix the Date Format
+- The `SaleDate` column had text values.
+- I created a new column called `Sales_Date_Converted` and changed the text into a real date format.
 
-## How It Was Done
+### 2. Fill in Missing Addresses
+- Some properties didn’t have an address.
+- I used data from other rows with the same `ParcelID` to fill the missing addresses.
 
-- Standardized the date field to make it usable for filtering and analysis.
-- Used `COALESCE()` and `JOIN` techniques to fill in missing address information.
-- Separated full addresses into individual columns for better readability.
-- Converted confusing 'Y'/'N' values to clear 'Yes'/'No'.
-- Removed duplicate records using `ROW_NUMBER()` with `CTE` (Common Table Expressions).
-- Dropped columns that weren’t needed after transformation.
+### 3. Split the Address into Parts
+- The full address was in one column.
+- I separated it into:
+  - `Property_Split_Address` – street name
+  - `Property_Split_City` – city
+  - `Property_Split_State` – state
+
+### 4. Clean the "SoldAsVacant" Column
+- This column had four values: `Y`, `Yes`, `N`, `No`.
+- I changed `Y` to `Yes`, and `N` to `No`, so the column only has `Yes` or `No`.
+
+### 5. Remove Duplicates
+- I found rows with the same values in key columns like `OwnerName`, `SalePrice`, etc.
+- I used a technique with `ROW_NUMBER()` and deleted the repeated rows.
+
+### 6. Delete Unused Columns
+- I removed columns we no longer needed:
+  - `SaleDate` (we made a new one)
+  - `PropertyAddress` (now split)
+  - `OwnerAddress`, `TaxDistrict`
+
+### 7. Final Table
+- The final dataset is clean and ready to use for reports or dashboards.
+
+---
+
+##  Summary of What I Did
+
+- [x] Fixed the date format
+- [x] Completed missing addresses
+- [x] Split address into smaller parts
+- [x] Cleaned Yes/No values
+- [x] Removed duplicate rows
+- [x] Deleted extra columns
+- [x] Checked the final clean table
+
+---
+
+## Final Thoughts
+
+Cleaning data is an important part of any data project. This project shows how we can use SQL to prepare messy data and make it ready for analysis.
+
