@@ -41,7 +41,7 @@ add column `Sales_Date_Converted` date;
 -- Updating the new column by converting 'SaleDate' (text) to proper DATE format
 
 update Nashville_Housing 
-set Sales_Date_Converted=str_to_date(SaleDate,"%Y-%m-%d");
+set Sales_Date_Converted=str_to_date(SaleDate,"%M %d, %Y");
 
 -- Verifying the converted date values
 
