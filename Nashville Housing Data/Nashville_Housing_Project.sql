@@ -1,6 +1,6 @@
 /*
 
-Cleaning data in SQL
+Cleaning data in MYSQL WORKBENCH.
 
 Sebastian Ortuno
 */
